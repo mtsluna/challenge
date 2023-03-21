@@ -46,4 +46,4 @@ This project has a hexagonal architecture for separate the domain layer from the
 
 ## Coverage
 
-This project has 85% of test.
+This project has the maximum amount of coverage. In this demo I exclude the utility class like, constants, beans, exceptions, etc.
