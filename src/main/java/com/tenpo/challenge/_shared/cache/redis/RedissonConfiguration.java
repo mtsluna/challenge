@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile(value = {"local", "pod"})
+//@Profile(value = {"local", "pod"})
 public class RedissonConfiguration {
 
   @Bean

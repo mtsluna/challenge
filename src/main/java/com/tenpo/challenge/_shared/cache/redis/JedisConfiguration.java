@@ -3,6 +3,7 @@ package com.tenpo.challenge._shared.cache.redis;
 import com.tenpo.challenge._shared.constants.CacheConstants;
 import java.time.Duration;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -16,6 +17,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 
+@EnableCaching
 @Configuration
 @RequiredArgsConstructor
 public class JedisConfiguration {
