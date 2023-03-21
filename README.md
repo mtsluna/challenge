@@ -35,6 +35,14 @@ https://elements.getpostman.com/redirect?entityId=19317917-099e1546-da44-459a-8f
 
 This project has a hexagonal architecture for separate the domain layer from the adapters layer. And each individual domain has a separated context, every module can communicate with another through use cases.
 
+## Docker Hub
+
+Public repository:
+
+```
+https://hub.docker.com/repository/docker/mtsluna/challenge/general
+```
+
 ## Technologies
 
 - Java 17 with Spring Boot 3.0.4
