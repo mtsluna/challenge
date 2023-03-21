@@ -31,8 +31,6 @@ public class CalculationController {
         calculationCommunication.getY()
     );
 
-    log.info("{}", System.getenv());
-
     return ResponseEntity.ok(CalculationPresentation
         .builder()
         .result(result)
