@@ -22,7 +22,6 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
               .message(e.getMessage())
               .description("Something wen wrong!")
               .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-              .path(request.getContextPath())
               .build()
         );
   }

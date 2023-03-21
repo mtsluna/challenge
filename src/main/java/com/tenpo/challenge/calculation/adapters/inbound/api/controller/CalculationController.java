@@ -6,6 +6,7 @@ import com.tenpo.challenge.calculation.adapters.inbound.api.presentation.Calcula
 import com.tenpo.challenge.calculation.domain.action.calculate.CalculateUseCase;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/calculations")
 @Validated
+@Slf4j
 public class CalculationController {
 
   private final CalculateUseCase calculateUseCase;
@@ -28,6 +30,8 @@ public class CalculationController {
         calculationCommunication.getX(),
         calculationCommunication.getY()
     );
+
+    log.info("{}", System.getenv());
 
     return ResponseEntity.ok(CalculationPresentation
         .builder()

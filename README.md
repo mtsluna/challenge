@@ -16,9 +16,10 @@ In your computer you need the follow applications:
 
 ## How to use the app
 
-Once you stay in the root project please enter in your command line the next command:
+Once you stay in the root project please enter in your command line the next commands:
 
 ```
+docker compose build
 docker compose up
 ```
 

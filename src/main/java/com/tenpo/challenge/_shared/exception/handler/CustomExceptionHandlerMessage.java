@@ -13,6 +13,5 @@ public class CustomExceptionHandlerMessage {
   private String message;
   private Instant timestamp;
   private HttpStatus httpStatus;
-  private String path;
 
 }
