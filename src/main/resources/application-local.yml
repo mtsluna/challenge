@@ -1,0 +1,19 @@
+connectors:
+  percentage-service:
+    url: http://localhost:8083
+    path: percentage
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/challenge?stringtype=unspecified
+    username: username
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    database: default
+    open-in-view: true
+redisson:
+  redis:
+    host: localhost
+    port: 6379

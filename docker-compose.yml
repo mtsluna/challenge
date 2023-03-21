@@ -1,0 +1,61 @@
+version: '3.9'
+
+services:
+  mock-server:
+    image: jordimartin/mmock:v3.0.3
+    container_name: challenge-mock-server
+    volumes:
+      - "./resources/mock:/config"
+    command:
+      - -server-statistics=false
+    ports:
+      # Console Port
+      - "8082:8082"
+      # HTTP Port
+      - "8083:8083"
+      # HTTPS Port
+      - "8084:8084"
+  dbmate:
+    image: "ghcr.io/amacneil/dbmate"
+    container_name: challenge-db-mate
+    volumes:
+      - "./db:/db"
+    environment:
+      - DATABASE_URL=postgres://username:password@db:5432/challenge?sslmode=disable
+    depends_on:
+      db:
+        condition: service_healthy
+    command:
+      - up
+  db:
+    image: "postgres"
+    container_name: challenge-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=challenge
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=password
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready --host=localhost --port 5432 --username=username --dbname=challenge" ]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+  redis:
+    image: "redis:alpine"
+    container_name: challenge-redis
+    command: redis-server --loglevel debug
+    ports:
+      - "6379:6379"
+  api:
+    build: .
+    container_name: challenge-api
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_URL=jdbc:postgresql://db:5432/challenge-postgres?stringtype=unspecified
+      - DB_USERNAME=username
+      - DB_PASSWORD=password
+      - DB_DRIVER=org.postgresql.Driver
+    depends_on:
+      - "dbmate"
